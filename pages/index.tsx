@@ -24,8 +24,10 @@ export default function Home() {
                     <code className={styles.code}>pages/index.js</code>
                 </p>
 
-                <button onClick={() => signinWithGitHub()}>Sign In</button>
-                {user && <button onClick={() => signout()}>Sign Out</button>}
+                <div style={{ display: 'flex' }}>
+                    <button style={{ marginRight: 10 }} onClick={() => signinWithGitHub()}>Sign In</button>
+                    {user && <button onClick={() => signout()}>Sign Out</button>}
+                </div>
                 <div>
                     {user?.email}
                 </div>
