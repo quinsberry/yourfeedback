@@ -3,7 +3,7 @@
 ## Description
 
 App that allow you to leave a fast feedback about webpages. </br>
-[Link to production](https://fastfeedback-theta-seven.vercel.app/) </br>
+[Link to production](https://yourfeedback-demo.vercel.app/) </br>
 
 **Technologies:** Next.js, Firebase, Typescript </br>
 **Libraries:** Chakra UI, Stripe </br>
@@ -11,7 +11,7 @@ App that allow you to leave a fast feedback about webpages. </br>
 ## Installation
 
 1. `npm install`
-2. Create `.env` file by `cp .env.example .env` command.
+2. Create `.env.local` file by `cp .env.example .env.local` command.
 
 ## Running the app
 
