@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import Router from 'next/router'
+
 import { firebase } from '@lib/firebase'
+import { createUser } from '@lib/db'
 
 
 type UseProvideAuth = ReturnType<typeof useProvideAuth>
@@ -23,7 +25,9 @@ function useProvideAuth() {
     const handleUser = async (rawUser: firebase.User | null) => {
         if (rawUser) {
             const user = await formatUser(rawUser)
+            const { token, ...userWithoutToken } = user
 
+            createUser(user.uid, userWithoutToken)
             setUser(user)
 
             setLoading(false)
@@ -106,8 +110,6 @@ const getStripeRole = async (): Promise<string> => {
 
     return decodedToken.claims.stripeRole || 'free'
 }
-
-
 
 
 interface FormattedUser {
