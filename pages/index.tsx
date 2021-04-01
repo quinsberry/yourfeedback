@@ -1,48 +1,26 @@
-import Head from 'next/head'
-
 import { useAuth } from '@lib/auth'
-
-import styles from '@styles/Home.module.css'
+import { Heading, Text, Code, Button } from "@chakra-ui/react"
 
 export default function Home() {
     const { user, signinWithGitHub, signout } = useAuth()
 
     return (
-        <div className={styles.container}>
-            <Head>
-                <title>YourFeedback</title>
-                <link rel="icon" href="/favicon.ico"/>
-            </Head>
-
-            <main className={styles.main}>
-                <h1 className={styles.title}>
+        <div>
+            <main>
+                <Heading>
                     Your Feedback
-                </h1>
+                </Heading>
 
-                <p className={styles.description}>
-                    Get started by editing{' '}
-                    <code className={styles.code}>pages/index.js</code>
-                </p>
+
+                <Text>
+                    Current user: <Code>{user?.email || 'None'}</Code>
+                </Text>
 
                 <div style={{ display: 'flex' }}>
-                    <button style={{ marginRight: 10 }} onClick={() => signinWithGitHub()}>Sign In</button>
-                    {user && <button onClick={() => signout()}>Sign Out</button>}
-                </div>
-                <div>
-                    {user?.email}
+                    <Button style={{ marginRight: 10 }} onClick={() => signinWithGitHub()}>Sign In</Button>
+                    {user && <Button onClick={() => signout()}>Sign Out</Button>}
                 </div>
             </main>
-
-            <footer className={styles.footer}>
-                <a
-                    href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Powered by{' '}
-                    <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo}/>
-                </a>
-            </footer>
         </div>
     )
 }
